@@ -1,0 +1,28 @@
+---
+title: "Replication Project"
+author: "Nathan Wise"
+date: "2023-11-02"
+output: word_document
+---
+```{r}
+library(stargazer)
+```
+
+```{r}
+#Reads in the data
+#setwd("C:/Users/wisen/OneDrive - Texas A&M University/Documents/datahub/public_NathanWise/excel_files")
+setwd("datahub/public_NathanWise/dataready")
+data <- read.csv("table3-cols12.csv")
+```
+```{r}
+data$lnhhsize <- log(2 + data$kids + data$seniors)
+```
+
+```{r}
+model1 <- lm(lnBTUelec ~ cddzip30_00 + hddzip30_00 + lnsqftK + numroom + elecboth + remodeled + lnyrs_res + lnhhsize +  lnhhinc + college + anydisabled + own + rfnum + roomair + centralair + centralair*exp(lnsqftK)+const4049 + const5059 + const6069 + const7074 + const7577 + const7882 + const8392 + const9397 + const9800 + const0104 + const0508+factor(cecfast)+kids + seniors + hohblk1 + hohlat1 + year09, data = data )
+summary(model1)
+```
+```{r}
+
+```
+
